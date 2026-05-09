@@ -9,7 +9,7 @@
 //
 // Usage: from the repo root, `npm run generate:projections` (delegates here).
 
-import { readdir, mkdir, writeFile, readFile } from 'node:fs/promises';
+import { readdir, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,6 +46,7 @@ async function generateForVersion(version) {
   }
 
   const outDir = join(npmDistDir, version);
+  await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
 
   const indexLines = [

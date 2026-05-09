@@ -1,11 +1,9 @@
 # Agency Protocol Specification
 
-> **Status:** placeholder. This document will contain the normative
-> specification for Agency Protocol.
->
-> The current specification draft lives in the v0 implementation proposal
-> in the reference runtime. That document will be migrated and refined into
-> this `SPEC.md` as part of the v0.0.1 schema work.
+> **Status:** v0.0.1 substrate in progress. The JSON Schemas under
+> [`versions/`](./versions/) are the canonical protocol artifacts. This prose
+> document records version intent, lifecycle notes, and design decisions that
+> are not fully expressible in schema form.
 
 ## Versions
 

@@ -27,7 +27,7 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   the shared scalars by relative `$ref`.
 - `SPEC.md`: new "Mistakes log" section recording design revisions made
   before release.
-- `versions/v0.0.1/fixtures/{valid,invalid}/`: twelve valid + twelve invalid
+- `versions/v0.0.1/fixtures/{valid,invalid}/`: eleven valid + eleven invalid
   fixtures, one of each per entity, exercising the v0 entity schemas and a
   representative failure mode for each.
 - `scripts/validate-fixtures.sh` and `npm run validate:fixtures`: validates
@@ -41,7 +41,7 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   (`datamodel-code-generator`, Pydantic v2) projections.
 - `packages/npm/` (`@withpotter/agency-protocol-types`, version `0.0.1`)
   and `packages/pypi/` (`agency-protocol`, version `0.0.1`) publish
-  manifests with committed `dist/v0.0.1/` outputs (25 `.d.ts` files plus
+  manifests with committed `dist/v0.0.1/` outputs (24 schema `.d.ts` files plus
   a barrel `index.d.ts`; Pydantic v2 modules under `dist/v0.0.1/`).
 - `scripts/generate-projections.sh` and `npm run generate:projections`:
   regenerates both projections from the schema sources. The `Projection
@@ -71,6 +71,12 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   `{interactive, programmatic, derived}`.
 - **Breaking (pre-release):** `MemoryRecord.memoryType` enum trimmed to
   `{fact, pattern, preference}`. `TraitCandidate.traitType` drops `style`.
+- `ContextPack.relevantMemories` is capped at 50 items, matching the v0
+  context assembly bound already applied to TypeScript and Python projections.
+- TypeScript projection generation now removes each version output directory
+  before regeneration so deleted schemas cannot leave stale published files.
+- Version and conformance README files now describe the current v0.0.1 schema
+  state instead of the earlier skeleton phase.
 
 ### Removed
 

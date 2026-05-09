@@ -54,6 +54,9 @@ export interface ContextPack {
    * @maxItems 100
    */
   recentEvents: AgencyEvent[];
+  /**
+   * @maxItems 50
+   */
   relevantMemories: MemoryRecord[];
   activeTrust: DelegatedTrust[];
   currentState: {

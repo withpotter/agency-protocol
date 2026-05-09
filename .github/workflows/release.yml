@@ -28,7 +28,6 @@ jobs:
             exit 0
           fi
           cd packages/npm
-          npm ci
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
