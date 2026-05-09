@@ -25,3 +25,13 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   `agency-frame`, `acknowledgement-event`, `agency-event`, `memory-record`,
   `trait-candidate`, `outcome-evidence`, `governed-setup-plan`,
   `context-pack`. Cross-references the shared scalars by relative `$ref`.
+- `SPEC.md`: new "Mistakes log" section recording design revisions made
+  before release.
+
+### Changed
+
+- **Breaking (pre-release):** `TrustDomain` is no longer a closed enum.
+  It is now a structural identifier (`^[a-z][a-z0-9_]*$`, max length 64),
+  with the value space delegated to runtime conformance profiles. The
+  `AgencyEvent.eventType` regex was narrowed to structural-only for the
+  same reason. See `SPEC.md` "Mistakes log" for rationale.
