@@ -1,0 +1,15 @@
+{
+  "id": "tc_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "traitType": "preference",
+  "statement": "Prefers minimalist editorial visual style with generous whitespace.",
+  "origin": "expressed",
+  "evidenceEventIds": ["evt_001"],
+  "confidence": { "value": 0.82, "producer": "principal_assertion", "calibrated": false },
+  "status": "active",
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}

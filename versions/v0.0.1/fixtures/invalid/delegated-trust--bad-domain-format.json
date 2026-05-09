@@ -1,0 +1,16 @@
+{
+  "id": "dt_002",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "domains": ["Storefront"],
+  "allowedActions": ["draft_content"],
+  "prohibitedActions": [],
+  "requiresApprovalFor": [],
+  "automationLevel": "draft_for_review",
+  "delegationChain": [],
+  "revocationRules": ["on_principal_request"],
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}

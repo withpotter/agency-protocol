@@ -1,0 +1,15 @@
+{
+  "id": "af_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "agencyExpressionId": "ax_001",
+  "objective": "Launch storefront for specialty coffee subscription",
+  "goal": "Achieve first 100 subscribers within 60 days",
+  "riskLevel": "medium",
+  "status": "active",
+  "createdFromEventId": "evt_001",
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}

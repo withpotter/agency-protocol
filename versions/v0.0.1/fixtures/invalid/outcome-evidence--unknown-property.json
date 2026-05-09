@@ -1,0 +1,18 @@
+{
+  "id": "oe_002",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "eventIds": ["evt_010"],
+  "action": "draft_content",
+  "contextUsed": [],
+  "assumptions": [],
+  "confidence": { "value": 0.5, "producer": "model", "calibrated": false },
+  "humanApprovalStatus": "pending",
+  "resultSummary": "Drafted content.",
+  "payload": {},
+  "extraField": "not allowed",
+  "audit": {
+    "createdAt": "2026-05-09T14:00:00Z",
+    "createdBy": { "actorType": "agent", "actorId": "drafting-agent" }
+  }
+}

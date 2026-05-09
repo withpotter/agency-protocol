@@ -1,0 +1,15 @@
+{
+  "id": "tc_002",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "traitType": "preference",
+  "statement": "Prefers minimalist style.",
+  "origin": "expressed",
+  "evidenceEventIds": [],
+  "confidence": { "value": 1.5, "producer": "model", "calibrated": false },
+  "status": "active",
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}

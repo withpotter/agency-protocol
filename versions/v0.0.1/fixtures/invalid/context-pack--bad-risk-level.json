@@ -1,0 +1,18 @@
+{
+  "principal": {
+    "id": "prn_biz_acme-co-001",
+    "type": "business",
+    "audit": {
+      "createdAt": "2026-05-09T12:00:00Z",
+      "createdBy": { "actorType": "system", "actorId": "protocol-runtime" }
+    }
+  },
+  "activeAgencyExpressions": [],
+  "objective": "Draft content.",
+  "recentEvents": [],
+  "relevantMemories": [],
+  "activeTrust": [],
+  "currentState": {},
+  "allowedSchemas": {},
+  "riskLevel": "extreme"
+}

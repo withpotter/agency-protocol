@@ -27,6 +27,15 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   `context-pack`. Cross-references the shared scalars by relative `$ref`.
 - `SPEC.md`: new "Mistakes log" section recording design revisions made
   before release.
+- `versions/v0.0.1/fixtures/{valid,invalid}/`: twelve valid + twelve invalid
+  fixtures, one of each per entity, exercising the v0 entity schemas and a
+  representative failure mode for each.
+- `scripts/validate-fixtures.sh` and `npm run validate:fixtures`: validates
+  every fixture against its schema. Valid fixtures must pass; invalid
+  fixtures must fail. Schema is resolved by stem from the fixture filename
+  (`<stem>--<descriptor>.json`), searching `entities/` then `shared/`. All
+  cross-file `$ref`s are wired via `-r`. The CI `Fixtures` workflow now
+  delegates to this script.
 
 ### Changed
 

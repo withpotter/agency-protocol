@@ -1,0 +1,39 @@
+{
+  "id": "gsp_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "principalProfileId": "pp_001",
+  "agencyExpressionId": "ax_001",
+  "agencyFrameId": "af_001",
+  "delegatedTrustId": "dt_001",
+  "status": "draft",
+  "summary": "Initial storefront setup with three product pages and a brand-aligned home page.",
+  "patchFormat": "merge_patch_rfc7396",
+  "settingsPatch": {
+    "brand": { "primaryColor": "#1f2933" }
+  },
+  "pageContentPatch": {
+    "home": { "heroTitle": "Coffee, single-origin and slow." }
+  },
+  "seoPatch": {
+    "title": "Acme Co. — Single-Origin Coffee",
+    "description": "Slow-roasted single-origin coffee from family farms.",
+    "keywords": ["coffee", "single-origin", "specialty"]
+  },
+  "recommendedActions": [
+    {
+      "type": "publish_home_page",
+      "title": "Publish home page draft",
+      "requiresApproval": true
+    }
+  ],
+  "assumptions": [
+    "Tenant has no existing published storefront content."
+  ],
+  "confidence": { "value": 0.74, "producer": "model", "calibrated": false },
+  "generatedEventIds": ["evt_020"],
+  "audit": {
+    "createdAt": "2026-05-09T15:00:00Z",
+    "createdBy": { "actorType": "agent", "actorId": "setup-planner" }
+  }
+}

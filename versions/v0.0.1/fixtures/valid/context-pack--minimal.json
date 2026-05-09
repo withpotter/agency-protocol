@@ -1,0 +1,36 @@
+{
+  "principal": {
+    "id": "prn_biz_acme-co-001",
+    "type": "business",
+    "name": "Acme Co.",
+    "audit": {
+      "createdAt": "2026-05-09T12:00:00Z",
+      "createdBy": { "actorType": "system", "actorId": "protocol-runtime" }
+    }
+  },
+  "activeAgencyExpressions": [
+    {
+      "id": "ax_001",
+      "principalId": "prn_biz_acme-co-001",
+      "principalType": "business",
+      "scope": { "type": "tenant", "id": "tnt_acme_001" },
+      "agencyType": "operate_storefront",
+      "domainOfConcern": "storefront",
+      "origin": { "source": "explicit", "evidenceEventIds": ["evt_001"] },
+      "inheritedContextKeys": ["principal_profile"],
+      "status": "active",
+      "confidence": { "value": 0.95, "producer": "principal_assertion", "calibrated": true },
+      "audit": {
+        "createdAt": "2026-05-09T12:00:00Z",
+        "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+      }
+    }
+  ],
+  "objective": "Draft this week's product description for new arrival.",
+  "recentEvents": [],
+  "relevantMemories": [],
+  "activeTrust": [],
+  "currentState": {},
+  "allowedSchemas": {},
+  "riskLevel": "low"
+}
