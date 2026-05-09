@@ -3,21 +3,15 @@
 
 from __future__ import annotations
 
-from enum import StrEnum
+from pydantic import Field, RootModel
 
 
-class ProtocolAction(StrEnum):
-    """
-    Closed enumeration of actions a protocol-governed agent may take. v0 set; additions are minor-version changes.
-    """
-
-    draft_content = "draft_content"
-    update_settings = "update_settings"
-    create_draft = "create_draft"
-    publish = "publish"
-    send_message = "send_message"
-    charge = "charge"
-    refund = "refund"
-    apply_discount = "apply_discount"
-    contact_external = "contact_external"
-    delete_record = "delete_record"
+class ProtocolAction(RootModel[str]):
+    root: str = Field(
+        ...,
+        description="Identifier of an action a protocol-governed agent may take. Actions are runtime-defined: the protocol specifies the structural shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own action registry as part of their conformance profile.",
+        max_length=64,
+        min_length=1,
+        pattern="^[a-z][a-z0-9_]*$",
+        title="ProtocolAction",
+    )

@@ -3,25 +3,16 @@
 
 from __future__ import annotations
 
-from enum import StrEnum
-
 from pydantic import BaseModel, ConfigDict, Field
-
-
-class Type(StrEnum):
-    tenant = "tenant"
-    organization = "organization"
-    platform = "platform"
-    application = "application"
 
 
 class Scope(BaseModel):
     """
-    Bounded scope object identifying the boundary within which an agency expression or protocol record applies.
+    Bounded scope object identifying the boundary within which an agency expression or protocol record applies. Scope types are runtime-defined: the protocol specifies the structural shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own scope-type registry as part of their conformance profile.
     """
 
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type
+    type: str = Field(..., max_length=64, min_length=1, pattern="^[a-z][a-z0-9_]*$")
     id: str = Field(..., min_length=1)

@@ -4,16 +4,16 @@
  */
 
 /**
- * Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where type is one of person, biz, org, app, sys.
+ * Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where the type segment is a runtime-defined lowercase identifier and the id segment is alphanumeric with dashes or underscores. The protocol fixes the prefix and structural shape; the type-segment value space is not enumerated.
  */
 export type PrincipalId = string;
 /**
- * Closed enumeration of principal kinds.
+ * Kind of protocol principal. The v0 protocol enumerates four runtime-agnostic kinds: person (a natural person), organization (a collective legal or social entity, including businesses, charities, and households), application (a software product acting on behalf of a principal), and system (an autonomous infrastructure actor). Verticals such as commerce or clinical practice are runtime concerns expressed via PrincipalProfile.attributes, not new principal kinds.
  */
-export type PrincipalType = 'person' | 'business' | 'organization' | 'application' | 'system';
+export type PrincipalType = 'person' | 'organization' | 'application' | 'system';
 
 /**
- * An immutable event observed, inferred, approved, or executed within a scope. eventType must be namespaced as <TrustDomain>.<noun>.<verb> (e.g. onboarding.profile.extracted).
+ * An immutable event observed, inferred, approved, or executed within a scope. eventType must be namespaced as <trust_domain>.<noun>.<verb> (e.g. core.profile.extracted), where the trust-domain segment is runtime-defined.
  */
 export interface AgencyEvent {
   eventId: string;
@@ -27,7 +27,7 @@ export interface AgencyEvent {
   eventType: string;
   source: string;
   actor: {
-    type: 'principal' | 'user' | 'customer' | 'system' | 'agent';
+    type: 'principal' | 'user' | 'system' | 'agent';
     id?: string;
   };
   subject: {
@@ -46,10 +46,10 @@ export interface AgencyEvent {
   audit: AuditBlock;
 }
 /**
- * Bounded scope object identifying the boundary within which an agency expression or protocol record applies.
+ * Bounded scope object identifying the boundary within which an agency expression or protocol record applies. Scope types are runtime-defined: the protocol specifies the structural shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own scope-type registry as part of their conformance profile.
  */
 export interface Scope {
-  type: 'tenant' | 'organization' | 'platform' | 'application';
+  type: string;
   id: string;
 }
 /**

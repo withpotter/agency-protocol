@@ -4,13 +4,13 @@
  */
 
 /**
- * Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where type is one of person, biz, org, app, sys.
+ * Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where the type segment is a runtime-defined lowercase identifier and the id segment is alphanumeric with dashes or underscores. The protocol fixes the prefix and structural shape; the type-segment value space is not enumerated.
  */
 export type PrincipalId = string;
 /**
- * Closed enumeration of principal kinds.
+ * Kind of protocol principal. The v0 protocol enumerates four runtime-agnostic kinds: person (a natural person), organization (a collective legal or social entity, including businesses, charities, and households), application (a software product acting on behalf of a principal), and system (an autonomous infrastructure actor). Verticals such as commerce or clinical practice are runtime concerns expressed via PrincipalProfile.attributes, not new principal kinds.
  */
-export type PrincipalType = 'person' | 'business' | 'organization' | 'application' | 'system';
+export type PrincipalType = 'person' | 'organization' | 'application' | 'system';
 
 /**
  * Structured representation of principal intent and context. Domain-specific implementations (e.g. BusinessProfile) are runtime concerns.
@@ -19,7 +19,7 @@ export interface PrincipalProfile {
   id: string;
   principalId: PrincipalId;
   principalType: PrincipalType;
-  profileType: 'business' | 'person' | 'organization' | 'application' | 'system';
+  profileType: PrincipalType;
   attributes: {
     [k: string]: unknown | undefined;
   };

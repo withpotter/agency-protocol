@@ -7,7 +7,6 @@ export * from './entities/agency-expression';
 export * from './entities/agency-frame';
 export * from './entities/context-pack';
 export * from './entities/delegated-trust';
-export * from './entities/governed-setup-plan';
 export * from './entities/memory-record';
 export * from './entities/outcome-evidence';
 export * from './entities/principal-profile';

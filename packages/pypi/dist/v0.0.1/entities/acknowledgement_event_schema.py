@@ -17,9 +17,9 @@ class Decision(StrEnum):
 
 
 class Method(StrEnum):
-    ui_click = "ui_click"
-    api_call = "api_call"
-    existing_delegated_trust = "existing_delegated_trust"
+    interactive = "interactive"
+    programmatic = "programmatic"
+    derived = "derived"
 
 
 class Type(StrEnum):
@@ -48,8 +48,8 @@ class AcknowledgementEvent(BaseModel):
     principal_id: str = Field(
         ...,
         alias="principalId",
-        description="Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where type is one of person, biz, org, app, sys.",
-        pattern="^prn_(person|biz|org|app|sys)_[A-Za-z0-9_-]+$",
+        description="Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where the type segment is a runtime-defined lowercase identifier and the id segment is alphanumeric with dashes or underscores. The protocol fixes the prefix and structural shape; the type-segment value space is not enumerated.",
+        pattern="^prn_[a-z][a-z0-9]*_[A-Za-z0-9_-]+$",
         title="PrincipalId",
     )
     scope: scope_schema.Scope

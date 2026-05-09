@@ -8,11 +8,10 @@ from enum import StrEnum
 
 class PrincipalType(StrEnum):
     """
-    Closed enumeration of principal kinds.
+    Kind of protocol principal. The v0 protocol enumerates four runtime-agnostic kinds: person (a natural person), organization (a collective legal or social entity, including businesses, charities, and households), application (a software product acting on behalf of a principal), and system (an autonomous infrastructure actor). Verticals such as commerce or clinical practice are runtime concerns expressed via PrincipalProfile.attributes, not new principal kinds.
     """
 
     person = "person"
-    business = "business"
     organization = "organization"
     application = "application"
     system = "system"

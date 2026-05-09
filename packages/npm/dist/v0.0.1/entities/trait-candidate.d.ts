@@ -4,23 +4,13 @@
  */
 
 /**
- * Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where type is one of person, biz, org, app, sys.
+ * Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where the type segment is a runtime-defined lowercase identifier and the id segment is alphanumeric with dashes or underscores. The protocol fixes the prefix and structural shape; the type-segment value space is not enumerated.
  */
 export type PrincipalId = string;
 /**
- * Closed enumeration of actions a protocol-governed agent may take. v0 set; additions are minor-version changes.
+ * Identifier of an action a protocol-governed agent may take. Actions are runtime-defined: the protocol specifies the structural shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own action registry as part of their conformance profile.
  */
-export type ProtocolAction =
-  | 'draft_content'
-  | 'update_settings'
-  | 'create_draft'
-  | 'publish'
-  | 'send_message'
-  | 'charge'
-  | 'refund'
-  | 'apply_discount'
-  | 'contact_external'
-  | 'delete_record';
+export type ProtocolAction = string;
 /**
  * Closed enumeration of inheritable context blocks within a ContextPack. Non-inheritable execution fields (principal, objective, rawIntent) are not enumerated here.
  */
@@ -50,7 +40,7 @@ export interface TraitCandidate {
   id: string;
   principalId: PrincipalId;
   scope: Scope;
-  traitType: 'style' | 'preference' | 'behavior_pattern' | 'operating_rule' | 'risk_boundary';
+  traitType: 'preference' | 'behavior_pattern' | 'operating_rule' | 'risk_boundary';
   statement: string;
   origin: 'expressed' | 'inferred' | 'discovered' | 'refined';
   triggerCondition?: {
@@ -76,10 +66,10 @@ export interface TraitCandidate {
   audit: AuditBlock;
 }
 /**
- * Bounded scope object identifying the boundary within which an agency expression or protocol record applies.
+ * Bounded scope object identifying the boundary within which an agency expression or protocol record applies. Scope types are runtime-defined: the protocol specifies the structural shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own scope-type registry as part of their conformance profile.
  */
 export interface Scope {
-  type: 'tenant' | 'organization' | 'platform' | 'application';
+  type: string;
   id: string;
 }
 /**
