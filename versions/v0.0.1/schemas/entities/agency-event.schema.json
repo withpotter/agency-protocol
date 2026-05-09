@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/agency-event.schema.json",
   "title": "AgencyEvent",
-  "description": "An immutable event observed, inferred, approved, or executed within a scope. eventType must be namespaced as <TrustDomain>.<noun>.<verb> (e.g. onboarding.profile.extracted).",
+  "description": "An immutable event observed, inferred, approved, or executed within a scope. eventType must be namespaced as <trust_domain>.<noun>.<verb> (e.g. core.profile.extracted), where the trust-domain segment is runtime-defined.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -40,7 +40,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["principal", "user", "customer", "system", "agent"]
+          "enum": ["principal", "user", "system", "agent"]
         },
         "id": { "type": "string" }
       }

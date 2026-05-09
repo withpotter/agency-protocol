@@ -1,8 +1,8 @@
 {
   "id": "ax_002",
   "principalId": "prn_biz_acme-co-001",
-  "principalType": "business",
-  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
   "agencyType": "operate_storefront",
   "domainOfConcern": "storefront",
   "origin": {

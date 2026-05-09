@@ -1,7 +1,7 @@
 {
   "id": "oe_001",
   "principalId": "prn_biz_acme-co-001",
-  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "scope": { "type": "account", "id": "acc_acme_001" },
   "agencyExpressionId": "ax_001",
   "agencyFrameId": "af_001",
   "eventIds": ["evt_010", "evt_011"],

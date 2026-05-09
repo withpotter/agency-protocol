@@ -1,7 +1,7 @@
 {
   "id": "pp_002",
   "principalId": "prn_biz_acme-co-001",
-  "principalType": "business",
+  "principalType": "organization",
   "profileType": "consumer",
   "attributes": {},
   "confidence": { "value": 0.5, "producer": "model", "calibrated": false },

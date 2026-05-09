@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/principal-type.schema.json",
   "title": "PrincipalType",
-  "description": "Closed enumeration of principal kinds.",
+  "description": "Kind of protocol principal. The v0 protocol enumerates four runtime-agnostic kinds: person (a natural person), organization (a collective legal or social entity, including businesses, charities, and households), application (a software product acting on behalf of a principal), and system (an autonomous infrastructure actor). Verticals such as commerce or clinical practice are runtime concerns expressed via PrincipalProfile.attributes, not new principal kinds.",
   "type": "string",
-  "enum": ["person", "business", "organization", "application", "system"]
+  "enum": ["person", "organization", "application", "system"]
 }

@@ -31,7 +31,7 @@
     },
     "memoryType": {
       "type": "string",
-      "enum": ["fact", "pattern", "preference", "risk", "milestone"]
+      "enum": ["fact", "pattern", "preference"]
     },
     "subjectType": { "type": "string", "minLength": 1 },
     "subjectId": { "type": "string" },

@@ -1,7 +1,7 @@
 {
   "principal": {
     "id": "prn_biz_acme-co-001",
-    "type": "business",
+    "type": "organization",
     "audit": {
       "createdAt": "2026-05-09T12:00:00Z",
       "createdBy": { "actorType": "system", "actorId": "protocol-runtime" }

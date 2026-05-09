@@ -2,14 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/scope.schema.json",
   "title": "Scope",
-  "description": "Bounded scope object identifying the boundary within which an agency expression or protocol record applies.",
+  "description": "Bounded scope object identifying the boundary within which an agency expression or protocol record applies. Scope types are runtime-defined: the protocol specifies the structural shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own scope-type registry as part of their conformance profile.",
   "type": "object",
   "additionalProperties": false,
   "required": ["type", "id"],
   "properties": {
     "type": {
       "type": "string",
-      "enum": ["tenant", "organization", "platform", "application"]
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "minLength": 1,
+      "maxLength": 64
     },
     "id": {
       "type": "string",

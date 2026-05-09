@@ -19,10 +19,7 @@
     "id": { "type": "string", "minLength": 1 },
     "principalId": { "$ref": "../shared/principal-id.schema.json" },
     "principalType": { "$ref": "../shared/principal-type.schema.json" },
-    "profileType": {
-      "type": "string",
-      "enum": ["business", "person", "organization", "application", "system"]
-    },
+    "profileType": { "$ref": "../shared/principal-type.schema.json" },
     "attributes": {
       "type": "object",
       "additionalProperties": true

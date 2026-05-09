@@ -27,7 +27,7 @@
     },
     "method": {
       "type": "string",
-      "enum": ["ui_click", "api_call", "existing_delegated_trust"]
+      "enum": ["interactive", "programmatic", "derived"]
     },
     "principalActor": {
       "type": "object",

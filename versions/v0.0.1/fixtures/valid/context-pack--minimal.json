@@ -1,7 +1,7 @@
 {
   "principal": {
     "id": "prn_biz_acme-co-001",
-    "type": "business",
+    "type": "organization",
     "name": "Acme Co.",
     "audit": {
       "createdAt": "2026-05-09T12:00:00Z",
@@ -12,8 +12,8 @@
     {
       "id": "ax_001",
       "principalId": "prn_biz_acme-co-001",
-      "principalType": "business",
-      "scope": { "type": "tenant", "id": "tnt_acme_001" },
+      "principalType": "organization",
+      "scope": { "type": "account", "id": "acc_acme_001" },
       "agencyType": "operate_storefront",
       "domainOfConcern": "storefront",
       "origin": { "source": "explicit", "evidenceEventIds": ["evt_001"] },
