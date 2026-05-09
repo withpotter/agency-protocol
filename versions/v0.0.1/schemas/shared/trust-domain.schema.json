@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/trust-domain.schema.json",
+  "title": "TrustDomain",
+  "description": "Closed enumeration of trust domains used to group agency expressions, delegations, and protocol actions.",
+  "type": "string",
+  "enum": [
+    "onboarding",
+    "storefront",
+    "brand",
+    "catalog",
+    "events",
+    "marketing",
+    "booking",
+    "finance",
+    "customer_relationships"
+  ]
+}

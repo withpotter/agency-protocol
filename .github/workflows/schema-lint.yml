@@ -34,7 +34,14 @@ jobs:
           set -euo pipefail
           while read -r f; do
             echo "Checking $f"
-            ajv compile -s "$f" --strict=true
+            # Pass every other schema as a ref so cross-file $refs resolve.
+            refs=()
+            while read -r r; do
+              if [[ "$r" != "$f" ]]; then
+                refs+=("-r" "$r")
+              fi
+            done < /tmp/schemas.txt
+            ajv compile --spec=draft2020 -s "$f" "${refs[@]}" -c ajv-formats --strict=true
           done < /tmp/schemas.txt
 
       - name: No schemas yet (skeleton phase)

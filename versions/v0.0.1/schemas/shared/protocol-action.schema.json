@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/protocol-action.schema.json",
+  "title": "ProtocolAction",
+  "description": "Closed enumeration of actions a protocol-governed agent may take. v0 set; additions are minor-version changes.",
+  "type": "string",
+  "enum": [
+    "draft_content",
+    "update_settings",
+    "create_draft",
+    "publish",
+    "send_message",
+    "charge",
+    "refund",
+    "apply_discount",
+    "contact_external",
+    "delete_record"
+  ]
+}

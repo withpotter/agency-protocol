@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/revocation-rule.schema.json",
+  "title": "RevocationRule",
+  "description": "Closed enumeration of conditions under which a delegation or agency expression is revoked.",
+  "type": "string",
+  "enum": [
+    "on_principal_request",
+    "on_evidence_failure",
+    "on_expiration",
+    "on_scope_change",
+    "on_boundary_violation"
+  ]
+}
