@@ -1,0 +1,23 @@
+{
+  "id": "gsp_002",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "principalProfileId": "pp_001",
+  "agencyExpressionId": "ax_001",
+  "agencyFrameId": "af_001",
+  "delegatedTrustId": "dt_001",
+  "status": "draft",
+  "summary": "Plan summary.",
+  "patchFormat": "json_patch_rfc6902",
+  "settingsPatch": {},
+  "pageContentPatch": {},
+  "seoPatch": {},
+  "recommendedActions": [],
+  "assumptions": [],
+  "confidence": { "value": 0.5, "producer": "model", "calibrated": false },
+  "generatedEventIds": [],
+  "audit": {
+    "createdAt": "2026-05-09T15:00:00Z",
+    "createdBy": { "actorType": "agent", "actorId": "setup-planner" }
+  }
+}

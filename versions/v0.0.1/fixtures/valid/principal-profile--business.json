@@ -1,0 +1,16 @@
+{
+  "id": "pp_001",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "business",
+  "profileType": "business",
+  "attributes": {
+    "displayName": "Acme Co.",
+    "industry": "specialty-coffee"
+  },
+  "confidence": { "value": 0.9, "producer": "principal_assertion", "calibrated": false },
+  "evidenceEventIds": ["evt_001"],
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "system", "actorId": "onboarding-runtime" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "eventId": "evt_002",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "business",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "eventType": "Onboarding.Profile.Extracted",
+  "source": "onboarding-service",
+  "actor": { "type": "system", "id": "onboarding-runtime" },
+  "subject": { "type": "principal_profile", "id": "pp_001" },
+  "payload": {},
+  "evidenceLevel": "inferred",
+  "importance": "medium",
+  "schemaVersion": "v0.0.1",
+  "occurredAt": "2026-05-09T12:00:00Z",
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "system", "actorId": "onboarding-runtime" }
+  }
+}

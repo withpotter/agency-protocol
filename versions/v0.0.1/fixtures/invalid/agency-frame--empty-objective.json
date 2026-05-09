@@ -1,0 +1,13 @@
+{
+  "id": "af_002",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "objective": "",
+  "goal": "Goal description",
+  "riskLevel": "medium",
+  "status": "active",
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}

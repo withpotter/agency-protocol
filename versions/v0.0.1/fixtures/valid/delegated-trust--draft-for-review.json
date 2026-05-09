@@ -1,0 +1,26 @@
+{
+  "id": "dt_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "agencyExpressionId": "ax_001",
+  "domains": ["storefront", "marketing"],
+  "allowedActions": ["draft_content", "create_draft"],
+  "prohibitedActions": ["delete_record", "charge"],
+  "requiresApprovalFor": ["publish", "send_message"],
+  "automationLevel": "draft_for_review",
+  "delegationChain": [
+    {
+      "fromPrincipalId": "prn_biz_acme-co-001",
+      "toAgencyExpressionId": "ax_001",
+      "delegatedTrustId": "dt_001",
+      "grantedAt": "2026-05-09T12:00:00Z",
+      "grantedBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+    }
+  ],
+  "expiresAt": "2027-05-09T12:00:00Z",
+  "revocationRules": ["on_principal_request", "on_evidence_failure"],
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}

@@ -4,7 +4,8 @@
   "description": "Local tooling for linting and validating Agency Protocol schemas. Not published.",
   "version": "0.0.0",
   "scripts": {
-    "lint:schemas": "bash scripts/lint-schemas.sh"
+    "lint:schemas": "bash scripts/lint-schemas.sh",
+    "validate:fixtures": "bash scripts/validate-fixtures.sh"
   },
   "devDependencies": {
     "ajv-cli": "^5.0.0",

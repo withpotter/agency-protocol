@@ -1,0 +1,17 @@
+{
+  "id": "ack_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "agencyExpressionId": "ax_001",
+  "decision": "acknowledged",
+  "method": "ui_click",
+  "principalActor": {
+    "type": "user",
+    "id": "usr_owner_001"
+  },
+  "evidenceEventIds": ["evt_001", "evt_002"],
+  "audit": {
+    "createdAt": "2026-05-09T12:05:00Z",
+    "createdBy": { "actorType": "user", "actorId": "usr_owner_001" }
+  }
+}

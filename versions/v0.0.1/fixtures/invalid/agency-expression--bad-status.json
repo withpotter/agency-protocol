@@ -1,0 +1,19 @@
+{
+  "id": "ax_002",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "business",
+  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "agencyType": "operate_storefront",
+  "domainOfConcern": "storefront",
+  "origin": {
+    "source": "explicit",
+    "evidenceEventIds": []
+  },
+  "inheritedContextKeys": ["principal_profile"],
+  "status": "pending_review",
+  "confidence": { "value": 0.95, "producer": "principal_assertion", "calibrated": true },
+  "audit": {
+    "createdAt": "2026-05-09T12:00:00Z",
+    "createdBy": { "actorType": "principal", "actorId": "prn_biz_acme-co-001" }
+  }
+}
