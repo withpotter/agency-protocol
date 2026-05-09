@@ -2,17 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/trust-domain.schema.json",
   "title": "TrustDomain",
-  "description": "Closed enumeration of trust domains used to group agency expressions, delegations, and protocol actions.",
+  "description": "Identifier of a trust domain. Trust domains are runtime-defined: the protocol specifies the shape (a lowercase ASCII identifier starting with a letter, optionally containing digits or underscores), but does not enumerate the value space. Conforming runtimes MUST publish their own trust-domain registry as part of their conformance profile.",
   "type": "string",
-  "enum": [
-    "onboarding",
-    "storefront",
-    "brand",
-    "catalog",
-    "events",
-    "marketing",
-    "booking",
-    "finance",
-    "customer_relationships"
-  ]
+  "pattern": "^[a-z][a-z0-9_]*$",
+  "minLength": 1,
+  "maxLength": 64
 }
