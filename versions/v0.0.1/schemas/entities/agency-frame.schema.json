@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/agency-frame.schema.json",
+  "title": "AgencyFrame",
+  "description": "First-class object grouping a specific objective pursued by one or more agency expressions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "objective",
+    "goal",
+    "riskLevel",
+    "status",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "agencyExpressionId": { "type": "string" },
+    "objective": { "type": "string", "minLength": 1 },
+    "goal": { "type": "string", "minLength": 1 },
+    "riskLevel": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "completed", "revoked"]
+    },
+    "createdFromEventId": { "type": "string" },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

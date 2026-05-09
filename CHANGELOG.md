@@ -17,3 +17,11 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
 - `scripts/lint-schemas.sh` and `npm run lint:schemas` for local validation.
   CI `schema-lint` workflow updated to resolve cross-file `$ref` and validate
   against JSON Schema draft 2020-12 with `ajv-formats` loaded.
+- `versions/v0.0.1/schemas/shared/`: forward-compatible supporting types —
+  `principal-type`, `delegation-link`, `agency-lineage`, `revocation-event`,
+  `validation-event`.
+- `versions/v0.0.1/schemas/entities/`: twelve protocol entity schemas —
+  `principal`, `principal-profile`, `agency-expression`, `delegated-trust`,
+  `agency-frame`, `acknowledgement-event`, `agency-event`, `memory-record`,
+  `trait-candidate`, `outcome-evidence`, `governed-setup-plan`,
+  `context-pack`. Cross-references the shared scalars by relative `$ref`.

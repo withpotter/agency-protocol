@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/principal-profile.schema.json",
+  "title": "PrincipalProfile",
+  "description": "Structured representation of principal intent and context. Domain-specific implementations (e.g. BusinessProfile) are runtime concerns.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "principalType",
+    "profileType",
+    "attributes",
+    "confidence",
+    "evidenceEventIds",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "principalType": { "$ref": "../shared/principal-type.schema.json" },
+    "profileType": {
+      "type": "string",
+      "enum": ["business", "person", "organization", "application", "system"]
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "confidence": { "$ref": "../shared/confidence.schema.json" },
+    "evidenceEventIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

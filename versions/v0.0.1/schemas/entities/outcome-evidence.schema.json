@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/outcome-evidence.schema.json",
+  "title": "OutcomeEvidence",
+  "description": "Evidence of an outcome produced under an agency expression or frame. When AgencyEvent.evidenceLevel is 'approved', the related OutcomeEvidence.humanApprovalStatus is authoritative.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "eventIds",
+    "action",
+    "contextUsed",
+    "assumptions",
+    "confidence",
+    "humanApprovalStatus",
+    "resultSummary",
+    "payload",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "agencyExpressionId": { "type": "string" },
+    "agencyFrameId": { "type": "string" },
+    "eventIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "action": { "type": "string", "minLength": 1 },
+    "contextUsed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "$ref": "../shared/confidence.schema.json" },
+    "humanApprovalStatus": {
+      "type": "string",
+      "enum": ["pending", "approved", "edited", "rejected", "not_required"]
+    },
+    "resultSummary": { "type": "string", "minLength": 1 },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

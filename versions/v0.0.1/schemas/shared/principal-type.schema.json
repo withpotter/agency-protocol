@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/principal-type.schema.json",
+  "title": "PrincipalType",
+  "description": "Closed enumeration of principal kinds.",
+  "type": "string",
+  "enum": ["person", "business", "organization", "application", "system"]
+}

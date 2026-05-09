@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/principal.schema.json",
+  "title": "Principal",
+  "description": "A protocol principal. The party whose agency is governed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "audit"],
+  "properties": {
+    "id": { "$ref": "../shared/principal-id.schema.json" },
+    "type": { "$ref": "../shared/principal-type.schema.json" },
+    "name": { "type": "string", "minLength": 1 },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}
