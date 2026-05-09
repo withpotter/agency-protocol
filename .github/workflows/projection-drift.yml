@@ -22,7 +22,6 @@ jobs:
 
       - name: Install generators
         run: |
-          npm install -g json-schema-to-typescript
           pip install --no-input "datamodel-code-generator[http]"
 
       - name: Detect schemas and generator config
@@ -42,29 +41,7 @@ jobs:
 
       - name: Regenerate TypeScript and Python projections
         if: steps.detect.outputs.present == '1'
-        run: |
-          set -euo pipefail
-          shopt -s globstar nullglob
-          # Each version owns its own generated outputs under packages/.
-          for ver_dir in versions/*/; do
-            ver="$(basename "$ver_dir")"
-            out_ts="packages/npm/dist/$ver"
-            out_py="packages/pypi/dist/$ver"
-            mkdir -p "$out_ts" "$out_py"
-            # TypeScript: one .d.ts per schema, recurse into subdirs.
-            for s in "$ver_dir"schemas/**/*.schema.json; do
-              [ -f "$s" ] || continue
-              name="$(basename "$s" .schema.json)"
-              json2ts -i "$s" -o "$out_ts/$name.d.ts"
-            done
-            # Python: modular input requires a directory output.
-            datamodel-codegen \
-              --input "$ver_dir"schemas \
-              --input-file-type jsonschema \
-              --output "$out_py" \
-              --output-model-type pydantic_v2.BaseModel \
-              --target-python-version 3.11
-          done
+        run: bash scripts/generate-projections.sh
 
       - name: Fail on drift
         if: steps.detect.outputs.present == '1'

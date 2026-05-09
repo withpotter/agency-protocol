@@ -1,0 +1,25 @@
+[project]
+name = "agency-protocol"
+version = "0.0.1"
+description = "Python (Pydantic v2) projection of Agency Protocol JSON Schemas. Auto-generated; do not edit by hand."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "withpotter" }]
+dependencies = [
+  "pydantic>=2.6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/withpotter/agency-protocol"
+Repository = "https://github.com/withpotter/agency-protocol"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# NOTE: The generated Pydantic models live under dist/v<X.Y.Z>/ where the
+# directory name (e.g. "v0.0.1") is not a valid Python identifier. Final
+# packaging (sdist/wheel mapping) will be solidified before the first PyPI
+# release. Until then, consumers can vendor the JSON Schemas directly or
+# use the typed npm package.

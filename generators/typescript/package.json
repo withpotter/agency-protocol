@@ -1,0 +1,13 @@
+{
+  "name": "@withpotter/agency-protocol-typescript-generator",
+  "private": true,
+  "description": "Local generator that produces the TypeScript projection of Agency Protocol schemas. Not published. The published package is @withpotter/agency-protocol-types under packages/npm/.",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.mjs"
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "^15.0.4"
+  }
+}
