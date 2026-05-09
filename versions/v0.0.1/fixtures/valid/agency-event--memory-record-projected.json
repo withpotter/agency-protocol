@@ -1,0 +1,28 @@
+{
+  "eventId": "evt_mem_projected_001",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "agencyExpressionId": "ax_001",
+  "eventType": "memory.record.projected",
+  "source": "agency-runtime",
+  "actor": { "type": "agent", "id": "memory-projection-agent" },
+  "subject": { "type": "memory_record", "id": "mem_projected_001" },
+  "payload": {
+    "candidateId": "mc_001",
+    "suggestedFunctionalType": "episodic",
+    "suggestedMemoryType": "fact",
+    "statement": "The principal plans to host a weekend launch event.",
+    "evidenceEventIds": ["evt_001"],
+    "acceptedBy": "host-runtime"
+  },
+  "evidenceLevel": "inferred",
+  "importance": "medium",
+  "correlationId": "corr_memory_projection_001",
+  "schemaVersion": "v0.0.1",
+  "occurredAt": "2026-05-09T15:00:00Z",
+  "audit": {
+    "createdAt": "2026-05-09T15:00:00Z",
+    "createdBy": { "actorType": "agent", "actorId": "memory-projection-agent" }
+  }
+}

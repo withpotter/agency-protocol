@@ -1,0 +1,24 @@
+{
+  "eventId": "evt_mem_corrected_001",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "eventType": "memory.record.corrected",
+  "source": "host-runtime",
+  "actor": { "type": "system", "id": "host-runtime" },
+  "subject": { "type": "memory_record", "id": "mem_corrected_001" },
+  "payload": {
+    "previousStatus": "active",
+    "newStatus": "corrected",
+    "reason": "Principal rejected the assumption supported by this memory.",
+    "outcomeEvidenceId": "oe_rejected_assumption_001"
+  },
+  "evidenceLevel": "executed",
+  "importance": "medium",
+  "schemaVersion": "v0.0.1",
+  "occurredAt": "2026-05-09T16:05:00Z",
+  "audit": {
+    "createdAt": "2026-05-09T16:05:00Z",
+    "createdBy": { "actorType": "system", "actorId": "host-runtime" }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "eventId": "evt_mem_staled_001",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "eventType": "memory.record.staled",
+  "source": "host-runtime",
+  "actor": { "type": "system", "id": "host-runtime" },
+  "subject": { "type": "memory_record", "id": "mem_stale_001" },
+  "payload": {
+    "previousStatus": "active",
+    "newStatus": "stale",
+    "reason": "episodic memory exceeded default 90 day TTL without reconfirming evidence"
+  },
+  "evidenceLevel": "observed",
+  "importance": "low",
+  "schemaVersion": "v0.0.1",
+  "occurredAt": "2026-08-08T15:00:00Z",
+  "audit": {
+    "createdAt": "2026-08-08T15:00:00Z",
+    "createdBy": { "actorType": "system", "actorId": "host-runtime" }
+  }
+}

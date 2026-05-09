@@ -27,9 +27,9 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   the shared scalars by relative `$ref`.
 - `SPEC.md`: new "Mistakes log" section recording design revisions made
   before release.
-- `versions/v0.0.1/fixtures/{valid,invalid}/`: eleven valid + eleven invalid
-  fixtures, one of each per entity, exercising the v0 entity schemas and a
-  representative failure mode for each.
+- `versions/v0.0.1/fixtures/{valid,invalid}/`: twenty valid + thirteen invalid
+  fixtures, covering each v0 entity schema, representative failure modes, and
+  memory lifecycle governance examples.
 - `scripts/validate-fixtures.sh` and `npm run validate:fixtures`: validates
   every fixture against its schema. Valid fixtures must pass; invalid
   fixtures must fail. Schema is resolved by stem from the fixture filename
@@ -47,6 +47,14 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   regenerates both projections from the schema sources. The `Projection
   Drift` CI workflow now delegates to this script and fails on diff
   against the committed `packages/` tree.
+- `SPEC.md`: v0.0.1 memory lifecycle governance rules for projection,
+  ownership, staleness, correction propagation, and the consolidation
+  boundary. These rules use existing `AgencyEvent`, `MemoryRecord`,
+  `OutcomeEvidence`, and audit primitives rather than adding new schema
+  artifacts.
+- Memory lifecycle fixtures covering projected memory, rejected projection,
+  staleness, correction propagation, and invalid memory evidence/event type
+  cases.
 
 ### Changed
 
