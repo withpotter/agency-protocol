@@ -31,21 +31,16 @@ Those live in the consumer runtimes that depend on this package.
 | --- | --- | --- |
 | `v0.0.1` | in development | initial substrate; schemas + fixtures + conformance harness |
 
+Potter is the initial reference runtime. The protocol does not assume or
+require a particular runtime; consumers are tracked in their own
+repositories.
+
 ## Versioning
 
 The repository is versioned per-spec-version under `versions/`. Each tagged
 release pins exactly one version directory. Breaking schema changes require a
 new directory and a new tag. Non-breaking additions are minor bumps within
 the same directory.
-
-## Consumer runtimes
-
-| Runtime | Repository | Role |
-| --- | --- | --- |
-| Potter | `withpotter/api` and related | Initial reference runtime |
-
-A second independent implementation is required for protocol portability
-claims (see the v0 implementation proposal for context).
 
 ## Layout
 
