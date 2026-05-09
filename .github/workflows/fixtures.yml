@@ -1,0 +1,60 @@
+name: Fixtures
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  fixtures:
+    name: Validate fixtures against schemas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Validate VALID fixtures (must pass)
+        run: |
+          set -euo pipefail
+          shopt -s nullglob globstar
+          fixtures=(versions/**/fixtures/valid/*.json)
+          if [ ${#fixtures[@]} -eq 0 ]; then
+            echo "No valid fixtures yet. Skipping."
+            exit 0
+          fi
+          for fx in "${fixtures[@]}"; do
+            schema_dir="${fx%/fixtures/valid/*}/schemas"
+            # Convention: <fixture>.json validates against <fixture-stem>.schema.json
+            stem="$(basename "$fx" .json)"
+            schema="$schema_dir/${stem%%--*}.schema.json"
+            echo "Validating $fx against $schema"
+            ajv validate -s "$schema" -d "$fx" --strict=true
+          done
+
+      - name: Validate INVALID fixtures (must fail)
+        run: |
+          set -euo pipefail
+          shopt -s nullglob globstar
+          fixtures=(versions/**/fixtures/invalid/*.json)
+          if [ ${#fixtures[@]} -eq 0 ]; then
+            echo "No invalid fixtures yet. Skipping."
+            exit 0
+          fi
+          for fx in "${fixtures[@]}"; do
+            schema_dir="${fx%/fixtures/invalid/*}/schemas"
+            stem="$(basename "$fx" .json)"
+            schema="$schema_dir/${stem%%--*}.schema.json"
+            echo "Expecting $fx to FAIL validation against $schema"
+            if ajv validate -s "$schema" -d "$fx" --strict=true 2>/dev/null; then
+              echo "::error::Fixture $fx validated successfully but is in invalid/"
+              exit 1
+            else
+              echo "OK — rejected as expected."
+            fi
+          done

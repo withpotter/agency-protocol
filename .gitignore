@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Build outputs
+dist/
+build/
+*.tgz
+
+# Generated projections (committed only on release branches)
+packages/npm/dist/
+packages/pypi/dist/
+
+# Local env
+.env
+.env.local

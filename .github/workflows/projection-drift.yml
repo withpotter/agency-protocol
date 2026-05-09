@@ -1,0 +1,72 @@
+name: Projection Drift
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  drift:
+    name: Regenerate projections and fail on diff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install generators
+        run: |
+          npm install -g json-schema-to-typescript
+          pip install --no-input "datamodel-code-generator[http]"
+
+      - name: Detect schemas
+        id: detect
+        run: |
+          if compgen -G "versions/**/schemas/**/*.schema.json" > /dev/null; then
+            echo "present=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Skeleton phase — no schemas yet
+        if: steps.detect.outputs.present == '0'
+        run: echo "No schemas yet. Drift check is a no-op until schemas land."
+
+      - name: Regenerate TypeScript and Python projections
+        if: steps.detect.outputs.present == '1'
+        run: |
+          set -euo pipefail
+          # Each version owns its own generated outputs under packages/.
+          for ver_dir in versions/*/; do
+            ver="$(basename "$ver_dir")"
+            out_ts="packages/npm/dist/$ver"
+            out_py="packages/pypi/dist/$ver"
+            mkdir -p "$out_ts" "$out_py"
+            # TS
+            for s in "$ver_dir"schemas/**/*.schema.json; do
+              [ -f "$s" ] || continue
+              name="$(basename "$s" .schema.json)"
+              json2ts -i "$s" -o "$out_ts/$name.d.ts"
+            done
+            # Python
+            datamodel-codegen \
+              --input "$ver_dir"schemas \
+              --input-file-type jsonschema \
+              --output "$out_py/__init__.py" \
+              --target-python-version 3.11
+          done
+
+      - name: Fail on drift
+        if: steps.detect.outputs.present == '1'
+        run: |
+          if ! git diff --quiet --exit-code packages/; then
+            echo "::error::Generated projections drifted from committed output."
+            git --no-pager diff packages/
+            exit 1
+          fi

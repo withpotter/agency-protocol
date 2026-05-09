@@ -1,0 +1,42 @@
+name: Schema Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint JSON Schema files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Find schemas
+        id: find
+        run: |
+          shopt -s nullglob
+          mapfile -t files < <(find versions -name '*.schema.json' -type f | sort)
+          echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+          printf '%s\n' "${files[@]}" > /tmp/schemas.txt
+          echo "Found ${#files[@]} schema file(s)"
+
+      - name: Validate each schema is well-formed
+        if: steps.find.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          while read -r f; do
+            echo "Checking $f"
+            ajv compile -s "$f" --strict=true
+          done < /tmp/schemas.txt
+
+      - name: No schemas yet (skeleton phase)
+        if: steps.find.outputs.count == '0'
+        run: echo "No *.schema.json files yet. Skipping lint until schemas land."
