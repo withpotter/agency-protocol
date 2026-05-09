@@ -1,0 +1,21 @@
+{
+  "eventId": "evt_mem_invalid_type_001",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "eventType": "memory.rejected",
+  "source": "host-runtime",
+  "actor": { "type": "system", "id": "host-runtime" },
+  "subject": { "type": "memory_candidate", "id": "mc_invalid_001" },
+  "payload": {
+    "rejectionReason": "event type must use domain.noun.verb form"
+  },
+  "evidenceLevel": "observed",
+  "importance": "low",
+  "schemaVersion": "v0.0.1",
+  "occurredAt": "2026-05-09T16:10:00Z",
+  "audit": {
+    "createdAt": "2026-05-09T16:10:00Z",
+    "createdBy": { "actorType": "system", "actorId": "host-runtime" }
+  }
+}

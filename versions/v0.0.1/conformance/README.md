@@ -11,5 +11,6 @@ specification version.
 The current harness contract is implemented by
 [`../../../scripts/validate-fixtures.sh`](../../../scripts/validate-fixtures.sh):
 valid fixtures must pass their matching schema, and invalid fixtures must fail.
-Golden lifecycle and context-assembly expectations will be added as the
-conformance surface expands beyond schema validation.
+Golden lifecycle expectations, including memory projection, staleness, and
+correction propagation, will be added as the conformance surface expands beyond
+schema validation.

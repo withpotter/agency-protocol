@@ -1,0 +1,24 @@
+{
+  "eventId": "evt_mem_rejected_001",
+  "principalId": "prn_biz_acme-co-001",
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "eventType": "memory.record.rejected",
+  "source": "host-runtime",
+  "actor": { "type": "system", "id": "host-runtime" },
+  "subject": { "type": "memory_candidate", "id": "mc_rejected_001" },
+  "payload": {
+    "candidateId": "mc_rejected_001",
+    "statement": "The principal always wants launch event copy.",
+    "rejectionReason": "low confidence and missing evidence",
+    "evidenceEventIds": []
+  },
+  "evidenceLevel": "observed",
+  "importance": "low",
+  "schemaVersion": "v0.0.1",
+  "occurredAt": "2026-05-09T16:10:00Z",
+  "audit": {
+    "createdAt": "2026-05-09T16:10:00Z",
+    "createdBy": { "actorType": "system", "actorId": "host-runtime" }
+  }
+}

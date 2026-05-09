@@ -1,0 +1,24 @@
+{
+  "id": "oe_rejected_assumption_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "agencyExpressionId": "ax_001",
+  "agencyFrameId": "af_001",
+  "eventIds": ["evt_mem_projected_001"],
+  "action": "draft_content",
+  "contextUsed": ["recent_events", "relevant_memories"],
+  "assumptions": [
+    "The principal is planning a weekend launch event."
+  ],
+  "confidence": { "value": 0.68, "producer": "model", "calibrated": false },
+  "humanApprovalStatus": "rejected",
+  "resultSummary": "Principal rejected the event-planning assumption.",
+  "payload": {
+    "rejectedAssumptionIds": ["assumption_launch_weekend_001"],
+    "reason": "The event is not confirmed."
+  },
+  "audit": {
+    "createdAt": "2026-05-09T16:00:00Z",
+    "createdBy": { "actorType": "user", "actorId": "usr_owner_001" }
+  }
+}

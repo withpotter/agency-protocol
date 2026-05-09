@@ -1,0 +1,20 @@
+{
+  "id": "mem_projected_001",
+  "principalId": "prn_biz_acme-co-001",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "functionalType": "episodic",
+  "memoryType": "fact",
+  "subjectType": "event",
+  "subjectId": "evt_launch_weekend_001",
+  "statement": "The principal plans to host a weekend launch event.",
+  "evidenceEventIds": ["evt_001", "evt_mem_projected_001"],
+  "confidence": { "value": 0.74, "producer": "model", "calibrated": true },
+  "observationCount": 1,
+  "status": "active",
+  "firstObservedAt": "2026-05-09T15:00:00Z",
+  "lastObservedAt": "2026-05-09T15:00:00Z",
+  "audit": {
+    "createdAt": "2026-05-09T15:00:00Z",
+    "createdBy": { "actorType": "system", "actorId": "host-runtime" }
+  }
+}
