@@ -1,9 +1,9 @@
 {
   "eventId": "evt_002",
   "principalId": "prn_biz_acme-co-001",
-  "principalType": "business",
-  "scope": { "type": "tenant", "id": "tnt_acme_001" },
-  "eventType": "Onboarding.Profile.Extracted",
+  "principalType": "organization",
+  "scope": { "type": "account", "id": "acc_acme_001" },
+  "eventType": "Core.Profile.Extracted",
   "source": "onboarding-service",
   "actor": { "type": "system", "id": "onboarding-runtime" },
   "subject": { "type": "principal_profile", "id": "pp_001" },

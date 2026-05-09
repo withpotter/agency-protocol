@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/principal-id.schema.json",
   "title": "PrincipalId",
-  "description": "Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where type is one of person, biz, org, app, sys.",
+  "description": "Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where the type segment is a runtime-defined lowercase identifier and the id segment is alphanumeric with dashes or underscores. The protocol fixes the prefix and structural shape; the type-segment value space is not enumerated.",
   "type": "string",
-  "pattern": "^prn_(person|biz|org|app|sys)_[A-Za-z0-9_-]+$"
+  "pattern": "^prn_[a-z][a-z0-9]*_[A-Za-z0-9_-]+$"
 }

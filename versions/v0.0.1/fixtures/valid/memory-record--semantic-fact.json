@@ -1,10 +1,10 @@
 {
   "id": "mem_001",
   "principalId": "prn_biz_acme-co-001",
-  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "scope": { "type": "account", "id": "acc_acme_001" },
   "functionalType": "semantic",
   "memoryType": "fact",
-  "subjectType": "business",
+  "subjectType": "organization",
   "subjectId": "prn_biz_acme-co-001",
   "statement": "Acme Co. sources beans exclusively from single-origin farms in Ethiopia and Colombia.",
   "evidenceEventIds": ["evt_001"],

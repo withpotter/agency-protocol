@@ -1,10 +1,10 @@
 {
   "id": "mem_002",
   "principalId": "prn_biz_acme-co-001",
-  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "scope": { "type": "account", "id": "acc_acme_001" },
   "functionalType": "semantic",
   "memoryType": "fact",
-  "subjectType": "business",
+  "subjectType": "organization",
   "statement": "Some statement.",
   "evidenceEventIds": [],
   "confidence": { "value": 0.5, "producer": "model", "calibrated": false },

@@ -24,7 +24,6 @@
     "traitType": {
       "type": "string",
       "enum": [
-        "style",
         "preference",
         "behavior_pattern",
         "operating_rule",

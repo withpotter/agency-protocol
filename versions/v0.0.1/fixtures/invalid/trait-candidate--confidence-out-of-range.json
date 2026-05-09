@@ -1,7 +1,7 @@
 {
   "id": "tc_002",
   "principalId": "prn_biz_acme-co-001",
-  "scope": { "type": "tenant", "id": "tnt_acme_001" },
+  "scope": { "type": "account", "id": "acc_acme_001" },
   "traitType": "preference",
   "statement": "Prefers minimalist style.",
   "origin": "expressed",

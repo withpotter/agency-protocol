@@ -1,8 +1,8 @@
 {
   "id": "pp_001",
   "principalId": "prn_biz_acme-co-001",
-  "principalType": "business",
-  "profileType": "business",
+  "principalType": "organization",
+  "profileType": "organization",
   "attributes": {
     "displayName": "Acme Co.",
     "industry": "specialty-coffee"
