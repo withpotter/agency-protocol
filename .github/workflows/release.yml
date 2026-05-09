@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release-npm:
+    name: Publish npm projection (GitHub Packages)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@withpotter'
+
+      - name: Publish (placeholder)
+        run: |
+          if [ ! -f packages/npm/package.json ]; then
+            echo "No npm package manifest yet — skipping until generators land."
+            exit 0
+          fi
+          cd packages/npm
+          npm ci
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-pypi:
+    name: Publish PyPI projection (GitHub Packages)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Publish (placeholder)
+        run: |
+          if [ ! -f packages/pypi/pyproject.toml ]; then
+            echo "No PyPI package manifest yet — skipping until generators land."
+            exit 0
+          fi
+          pip install --no-input build twine
+          cd packages/pypi
+          python -m build
+          # GitHub Packages does not host PyPI directly; we attach artifacts to
+          # the release until we move to public PyPI on go-public.
+          ls -la dist/
