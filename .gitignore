@@ -28,13 +28,8 @@ venv/
 .ruff_cache/
 
 # Build outputs
-dist/
 build/
 *.tgz
-
-# Generated projections (committed only on release branches)
-packages/npm/dist/
-packages/pypi/dist/
 
 # Local env
 .env

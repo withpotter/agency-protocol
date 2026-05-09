@@ -1,0 +1,23 @@
+[project]
+name = "agency-protocol-python-generator"
+version = "0.0.0"
+description = "Local generator that produces the Python (Pydantic v2) projection of Agency Protocol schemas. Not published. The published package is `agency-protocol` under packages/pypi/."
+requires-python = ">=3.11"
+dependencies = [
+  "datamodel-code-generator[http]>=0.26.0",
+]
+
+[tool.datamodel-codegen]
+input-file-type = "jsonschema"
+output-model-type = "pydantic_v2.BaseModel"
+target-python-version = "3.11"
+use-schema-description = true
+use-title-as-name = true
+disable-timestamp = true
+field-constraints = true
+use-double-quotes = true
+use-standard-collections = true
+use-union-operator = true
+use-default = true
+snake-case-field = true
+collapse-root-models = true

@@ -1,0 +1,21 @@
+{
+  "name": "@withpotter/agency-protocol-types",
+  "version": "0.0.1",
+  "description": "TypeScript projection of Agency Protocol JSON Schemas. Auto-generated; do not edit by hand.",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/withpotter/agency-protocol",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withpotter/agency-protocol.git",
+    "directory": "packages/npm"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "dist/**/*.d.ts"
+  ]
+}

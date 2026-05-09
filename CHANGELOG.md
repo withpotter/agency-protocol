@@ -36,6 +36,17 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
   (`<stem>--<descriptor>.json`), searching `entities/` then `shared/`. All
   cross-file `$ref`s are wired via `-r`. The CI `Fixtures` workflow now
   delegates to this script.
+- `generators/typescript/` and `generators/python/`: generator configs for
+  the published TypeScript (`json-schema-to-typescript`) and Python
+  (`datamodel-code-generator`, Pydantic v2) projections.
+- `packages/npm/` (`@withpotter/agency-protocol-types`, version `0.0.1`)
+  and `packages/pypi/` (`agency-protocol`, version `0.0.1`) publish
+  manifests with committed `dist/v0.0.1/` outputs (25 `.d.ts` files plus
+  a barrel `index.d.ts`; Pydantic v2 modules under `dist/v0.0.1/`).
+- `scripts/generate-projections.sh` and `npm run generate:projections`:
+  regenerates both projections from the schema sources. The `Projection
+  Drift` CI workflow now delegates to this script and fails on diff
+  against the committed `packages/` tree.
 
 ### Changed
 
