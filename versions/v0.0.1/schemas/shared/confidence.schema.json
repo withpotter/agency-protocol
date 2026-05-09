@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/confidence.schema.json",
+  "title": "Confidence",
+  "description": "Calibrated confidence value with provenance. value is bounded to the closed interval [0, 1].",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["value", "producer", "calibrated"],
+  "properties": {
+    "value": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "producer": {
+      "type": "string",
+      "enum": ["model", "heuristic", "principal_assertion", "derived", "human_review"]
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "calibrated": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/scope.schema.json",
+  "title": "Scope",
+  "description": "Bounded scope object identifying the boundary within which an agency expression or protocol record applies.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "id"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["tenant", "organization", "platform", "application"]
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

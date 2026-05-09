@@ -1,0 +1,13 @@
+{
+  "name": "@withpotter/agency-protocol-tooling",
+  "private": true,
+  "description": "Local tooling for linting and validating Agency Protocol schemas. Not published.",
+  "version": "0.0.0",
+  "scripts": {
+    "lint:schemas": "bash scripts/lint-schemas.sh"
+  },
+  "devDependencies": {
+    "ajv-cli": "^5.0.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

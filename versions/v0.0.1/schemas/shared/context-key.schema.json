@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/context-key.schema.json",
+  "title": "ContextKey",
+  "description": "Closed enumeration of inheritable context blocks within a ContextPack. Non-inheritable execution fields (principal, objective, rawIntent) are not enumerated here.",
+  "type": "string",
+  "enum": [
+    "principal_profile",
+    "agency_expression",
+    "delegated_trust",
+    "recent_events",
+    "relevant_memories",
+    "current_state",
+    "allowed_schemas",
+    "risk_level"
+  ]
+}

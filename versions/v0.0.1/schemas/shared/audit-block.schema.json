@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/audit-block.schema.json",
+  "title": "AuditBlock",
+  "description": "Cross-cutting audit block embedded in protocol entities. v0 requires createdAt and createdBy; delegationChain, revocationHistory, and validationEvents are forward-compatible stubs formally specified in v0.1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["createdAt", "createdBy"],
+  "properties": {
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actorType", "actorId"],
+      "properties": {
+        "actorType": {
+          "type": "string",
+          "enum": ["principal", "user", "system", "agent"]
+        },
+        "actorId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "delegationChain": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "revocationHistory": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "validationEvents": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
+  }
+}

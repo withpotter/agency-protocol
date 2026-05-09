@@ -25,40 +25,44 @@ jobs:
           npm install -g json-schema-to-typescript
           pip install --no-input "datamodel-code-generator[http]"
 
-      - name: Detect schemas
+      - name: Detect schemas and generator config
         id: detect
         run: |
-          if compgen -G "versions/**/schemas/**/*.schema.json" > /dev/null; then
+          if compgen -G "versions/**/schemas/**/*.schema.json" > /dev/null \
+             && [ -f generators/typescript/package.json ] \
+             && [ -f generators/python/pyproject.toml ]; then
             echo "present=1" >> "$GITHUB_OUTPUT"
           else
             echo "present=0" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Skeleton phase — no schemas yet
+      - name: Skeleton phase — schemas or generator config not yet present
         if: steps.detect.outputs.present == '0'
-        run: echo "No schemas yet. Drift check is a no-op until schemas land."
+        run: echo "Schemas or generator configuration not yet committed. Drift check is a no-op until both land."
 
       - name: Regenerate TypeScript and Python projections
         if: steps.detect.outputs.present == '1'
         run: |
           set -euo pipefail
+          shopt -s globstar nullglob
           # Each version owns its own generated outputs under packages/.
           for ver_dir in versions/*/; do
             ver="$(basename "$ver_dir")"
             out_ts="packages/npm/dist/$ver"
             out_py="packages/pypi/dist/$ver"
             mkdir -p "$out_ts" "$out_py"
-            # TS
+            # TypeScript: one .d.ts per schema, recurse into subdirs.
             for s in "$ver_dir"schemas/**/*.schema.json; do
               [ -f "$s" ] || continue
               name="$(basename "$s" .schema.json)"
               json2ts -i "$s" -o "$out_ts/$name.d.ts"
             done
-            # Python
+            # Python: modular input requires a directory output.
             datamodel-codegen \
               --input "$ver_dir"schemas \
               --input-file-type jsonschema \
-              --output "$out_py/__init__.py" \
+              --output "$out_py" \
+              --output-model-type pydantic_v2.BaseModel \
               --target-python-version 3.11
           done
 

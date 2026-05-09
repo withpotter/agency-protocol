@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/principal-id.schema.json",
+  "title": "PrincipalId",
+  "description": "Namespaced identifier for a protocol principal. Format: prn_<type>_<id> where type is one of person, biz, org, app, sys.",
+  "type": "string",
+  "pattern": "^prn_(person|biz|org|app|sys)_[A-Za-z0-9_-]+$"
+}
