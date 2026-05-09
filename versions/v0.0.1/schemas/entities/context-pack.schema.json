@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/context-pack.schema.json",
+  "title": "ContextPack",
+  "description": "Runtime scoped context object. v0 assembly is deterministic; recentEvents is bounded (see proposal §10.1).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "principal",
+    "activeAgencyExpressions",
+    "objective",
+    "recentEvents",
+    "relevantMemories",
+    "activeTrust",
+    "currentState",
+    "allowedSchemas",
+    "riskLevel"
+  ],
+  "properties": {
+    "principal": { "$ref": "principal.schema.json" },
+    "principalProfile": { "$ref": "principal-profile.schema.json" },
+    "activeAgencyExpressions": {
+      "type": "array",
+      "items": { "$ref": "agency-expression.schema.json" }
+    },
+    "objective": { "type": "string", "minLength": 1 },
+    "rawIntent": { "type": "string" },
+    "recentEvents": {
+      "type": "array",
+      "items": { "$ref": "agency-event.schema.json" },
+      "maxItems": 100
+    },
+    "relevantMemories": {
+      "type": "array",
+      "items": { "$ref": "memory-record.schema.json" }
+    },
+    "activeTrust": {
+      "type": "array",
+      "items": { "$ref": "delegated-trust.schema.json" }
+    },
+    "currentState": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "allowedSchemas": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    }
+  }
+}

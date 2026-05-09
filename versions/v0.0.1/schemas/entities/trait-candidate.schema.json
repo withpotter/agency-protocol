@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/trait-candidate.schema.json",
+  "title": "TraitCandidate",
+  "description": "v0 representation of a captured/proposed trait. v0.1+ may promote validated candidates to full TraitPackage objects.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "traitType",
+    "statement",
+    "origin",
+    "evidenceEventIds",
+    "confidence",
+    "status",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "traitType": {
+      "type": "string",
+      "enum": [
+        "style",
+        "preference",
+        "behavior_pattern",
+        "operating_rule",
+        "risk_boundary"
+      ]
+    },
+    "statement": { "type": "string", "minLength": 1 },
+    "origin": {
+      "type": "string",
+      "enum": ["expressed", "inferred", "discovered", "refined"]
+    },
+    "triggerCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "eventTypes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "decisionPattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "preferredActions": {
+          "type": "array",
+          "items": { "$ref": "../shared/protocol-action.schema.json" }
+        }
+      }
+    },
+    "authorityBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowedActions", "requiresApprovalFor"],
+      "properties": {
+        "allowedActions": {
+          "type": "array",
+          "items": { "$ref": "../shared/protocol-action.schema.json" }
+        },
+        "requiresApprovalFor": {
+          "type": "array",
+          "items": { "$ref": "../shared/protocol-action.schema.json" }
+        }
+      }
+    },
+    "requiredContext": {
+      "type": "array",
+      "items": { "$ref": "../shared/context-key.schema.json" }
+    },
+    "outcomeEvidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failureCases": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "lineage": { "$ref": "../shared/agency-lineage.schema.json" },
+    "revocationRule": { "$ref": "../shared/revocation-rule.schema.json" },
+    "evidenceEventIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "$ref": "../shared/confidence.schema.json" },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "acknowledged", "active", "corrected", "revoked"]
+    },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

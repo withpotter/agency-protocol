@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/acknowledgement-event.schema.json",
+  "title": "AcknowledgementEvent",
+  "description": "Typed record that activates, rejects, or modifies a proposed agency expression.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "agencyExpressionId",
+    "decision",
+    "method",
+    "principalActor",
+    "evidenceEventIds",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "agencyExpressionId": { "type": "string", "minLength": 1 },
+    "decision": {
+      "type": "string",
+      "enum": ["acknowledged", "rejected", "modified"]
+    },
+    "method": {
+      "type": "string",
+      "enum": ["ui_click", "api_call", "existing_delegated_trust"]
+    },
+    "principalActor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["principal", "user", "system"]
+        },
+        "id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidenceEventIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

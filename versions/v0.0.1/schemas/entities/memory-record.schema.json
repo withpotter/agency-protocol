@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/memory-record.schema.json",
+  "title": "MemoryRecord",
+  "description": "A persisted memory associated with a principal. v0 captures both functionalType (behaviour) and memoryType (content). Consolidation is defined in v0.1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "functionalType",
+    "memoryType",
+    "subjectType",
+    "statement",
+    "evidenceEventIds",
+    "confidence",
+    "observationCount",
+    "status",
+    "firstObservedAt",
+    "lastObservedAt",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "functionalType": {
+      "type": "string",
+      "enum": ["working", "episodic", "semantic", "procedural"]
+    },
+    "memoryType": {
+      "type": "string",
+      "enum": ["fact", "pattern", "preference", "risk", "milestone"]
+    },
+    "subjectType": { "type": "string", "minLength": 1 },
+    "subjectId": { "type": "string" },
+    "statement": { "type": "string", "minLength": 1 },
+    "evidenceEventIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "$ref": "../shared/confidence.schema.json" },
+    "observationCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "stale", "corrected", "revoked"]
+    },
+    "firstObservedAt": { "type": "string", "format": "date-time" },
+    "lastObservedAt": { "type": "string", "format": "date-time" },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/governed-setup-plan.schema.json",
+  "title": "GovernedSetupPlan",
+  "description": "Primary output of the v0 natural-language business setup scenario. A protocol-shaped plan, not a product mutation. Patches use RFC 7396 JSON Merge Patch and must validate against a domain schema before review or apply.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "principalProfileId",
+    "agencyExpressionId",
+    "agencyFrameId",
+    "delegatedTrustId",
+    "status",
+    "summary",
+    "patchFormat",
+    "settingsPatch",
+    "pageContentPatch",
+    "seoPatch",
+    "recommendedActions",
+    "assumptions",
+    "confidence",
+    "generatedEventIds",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "principalProfileId": { "type": "string", "minLength": 1 },
+    "agencyExpressionId": { "type": "string", "minLength": 1 },
+    "agencyFrameId": { "type": "string", "minLength": 1 },
+    "delegatedTrustId": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "validated", "reviewed", "applied", "rejected", "expired"]
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "patchFormat": {
+      "type": "string",
+      "enum": ["merge_patch_rfc7396"]
+    },
+    "settingsPatch": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "pageContentPatch": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "seoPatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ogImage": { "type": "string" }
+      }
+    },
+    "workflowGraph": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "recommendedActions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "title", "requiresApproval"],
+        "properties": {
+          "type": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" },
+          "requiresApproval": { "type": "boolean" },
+          "relatedSubject": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": {
+              "type": { "type": "string", "minLength": 1 },
+              "id": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "$ref": "../shared/confidence.schema.json" },
+    "generatedEventIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outcomeEvidenceId": { "type": "string" },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

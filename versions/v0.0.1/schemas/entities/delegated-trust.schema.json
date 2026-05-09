@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/delegated-trust.schema.json",
+  "title": "DelegatedTrust",
+  "description": "Bounded delegation of authority within a scope, with allowed/prohibited actions, automation level, and revocation rules. v0 defaults to draft_for_review for generated setup plans.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "scope",
+    "domains",
+    "allowedActions",
+    "prohibitedActions",
+    "requiresApprovalFor",
+    "automationLevel",
+    "delegationChain",
+    "revocationRules",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "agencyExpressionId": { "type": "string" },
+    "domains": {
+      "type": "array",
+      "items": { "$ref": "../shared/trust-domain.schema.json" }
+    },
+    "allowedActions": {
+      "type": "array",
+      "items": { "$ref": "../shared/protocol-action.schema.json" }
+    },
+    "prohibitedActions": {
+      "type": "array",
+      "items": { "$ref": "../shared/protocol-action.schema.json" }
+    },
+    "requiresApprovalFor": {
+      "type": "array",
+      "items": { "$ref": "../shared/protocol-action.schema.json" }
+    },
+    "automationLevel": {
+      "type": "string",
+      "enum": [
+        "suggest_only",
+        "draft_for_review",
+        "apply_after_confirmation",
+        "auto_apply_within_limits"
+      ]
+    },
+    "delegationChain": {
+      "type": "array",
+      "items": { "$ref": "../shared/delegation-link.schema.json" }
+    },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "revocationRules": {
+      "type": "array",
+      "items": { "$ref": "../shared/revocation-rule.schema.json" }
+    },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

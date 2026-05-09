@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/agency-event.schema.json",
+  "title": "AgencyEvent",
+  "description": "An immutable event observed, inferred, approved, or executed within a scope. eventType must be namespaced as <TrustDomain>.<noun>.<verb> (e.g. onboarding.profile.extracted).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "principalId",
+    "principalType",
+    "scope",
+    "eventType",
+    "source",
+    "actor",
+    "subject",
+    "payload",
+    "evidenceLevel",
+    "importance",
+    "schemaVersion",
+    "occurredAt",
+    "audit"
+  ],
+  "properties": {
+    "eventId": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "principalType": { "$ref": "../shared/principal-type.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "agencyExpressionId": { "type": "string" },
+    "eventType": {
+      "type": "string",
+      "pattern": "^(onboarding|storefront|brand|catalog|events|marketing|booking|finance|customer_relationships)\\.[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$"
+    },
+    "source": { "type": "string", "minLength": 1 },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["principal", "user", "customer", "system", "agent"]
+        },
+        "id": { "type": "string" }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "id": { "type": "string" }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "evidenceLevel": {
+      "type": "string",
+      "enum": ["observed", "inferred", "approved", "executed"]
+    },
+    "importance": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "correlationId": { "type": "string" },
+    "causationId": { "type": "string" },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}

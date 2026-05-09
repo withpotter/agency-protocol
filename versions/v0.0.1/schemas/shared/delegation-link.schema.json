@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/delegation-link.schema.json",
+  "title": "DelegationLink",
+  "description": "One link in a delegation chain. Forward-compatible stub formally specified in v0.1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["grantedAt", "grantedBy"],
+  "properties": {
+    "fromPrincipalId": { "type": "string" },
+    "fromAgencyExpressionId": { "type": "string" },
+    "toAgencyExpressionId": { "type": "string" },
+    "delegatedTrustId": { "type": "string" },
+    "grantedAt": { "type": "string", "format": "date-time" },
+    "grantedBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actorType", "actorId"],
+      "properties": {
+        "actorType": {
+          "type": "string",
+          "enum": ["principal", "user", "system", "agent"]
+        },
+        "actorId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

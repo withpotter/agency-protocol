@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/agency-lineage.schema.json",
+  "title": "AgencyLineage",
+  "description": "Lineage metadata linking an AgencyExpression to its root and parent expressions, plus its delegation chain. Forward-compatible stub formally specified in v0.1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["delegationChain"],
+  "properties": {
+    "rootAgencyExpressionId": { "type": "string" },
+    "parentAgencyExpressionId": { "type": "string" },
+    "delegationChain": {
+      "type": "array",
+      "items": { "$ref": "delegation-link.schema.json" }
+    }
+  }
+}

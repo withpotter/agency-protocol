@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/agency-expression.schema.json",
+  "title": "AgencyExpression",
+  "description": "A scoped expression of agency held by a principal. v0 uses status values proposed/acknowledged/active/rejected/revoked.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "principalId",
+    "principalType",
+    "scope",
+    "agencyType",
+    "domainOfConcern",
+    "origin",
+    "inheritedContextKeys",
+    "status",
+    "confidence",
+    "audit"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "principalId": { "$ref": "../shared/principal-id.schema.json" },
+    "principalType": { "$ref": "../shared/principal-type.schema.json" },
+    "scope": { "$ref": "../shared/scope.schema.json" },
+    "agencyType": { "type": "string", "minLength": 1 },
+    "domainOfConcern": { "type": "string", "minLength": 1 },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "evidenceEventIds"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "inferred_from_events",
+            "inferred_from_profile",
+            "system_default"
+          ]
+        },
+        "evidenceEventIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "parentAgencyExpressionId": { "type": "string" },
+    "lineage": { "$ref": "../shared/agency-lineage.schema.json" },
+    "inheritedContextKeys": {
+      "type": "array",
+      "items": { "$ref": "../shared/context-key.schema.json" }
+    },
+    "delegatedTrustId": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "inferred",
+        "proposed",
+        "acknowledged",
+        "active",
+        "paused",
+        "rejected",
+        "revoked"
+      ]
+    },
+    "confidence": { "$ref": "../shared/confidence.schema.json" },
+    "audit": { "$ref": "../shared/audit-block.schema.json" }
+  }
+}
