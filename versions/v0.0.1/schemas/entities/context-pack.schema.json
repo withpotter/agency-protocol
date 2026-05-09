@@ -32,7 +32,8 @@
     },
     "relevantMemories": {
       "type": "array",
-      "items": { "$ref": "memory-record.schema.json" }
+      "items": { "$ref": "memory-record.schema.json" },
+      "maxItems": 50
     },
     "activeTrust": {
       "type": "array",

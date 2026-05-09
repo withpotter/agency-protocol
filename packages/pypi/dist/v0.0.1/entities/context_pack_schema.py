@@ -45,7 +45,7 @@ class ContextPack(BaseModel):
         ..., alias="recentEvents", max_length=100
     )
     relevant_memories: list[memory_record_schema.MemoryRecord] = Field(
-        ..., alias="relevantMemories"
+        ..., alias="relevantMemories", max_length=50
     )
     active_trust: list[delegated_trust_schema.DelegatedTrust] = Field(
         ..., alias="activeTrust"

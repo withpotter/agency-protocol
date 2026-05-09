@@ -8,8 +8,7 @@ root with:
 npm run generate:projections
 ```
 
-Importing types:
-
-```python
-from agency_protocol.v0_0_1.entities.principal import Principal
-```
+Current generated modules live under `dist/v0.0.1/`. Final package import
+mapping will be stabilized before the first PyPI release; until then, Python
+consumers should prefer the canonical JSON Schemas or vendor the generated
+projection from this package directory.
