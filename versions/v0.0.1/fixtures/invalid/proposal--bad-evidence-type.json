@@ -1,0 +1,13 @@
+{
+  "id": "p-bad-3",
+  "kind": "example-change",
+  "origin": "agency-runtime",
+  "evidence": [
+    { "type": "catalog-fact", "content": "a domain-specific evidence type is not part of the substrate" }
+  ],
+  "risk": "low",
+  "payload": {},
+  "status": "draft",
+  "createdAt": "2026-07-09T12:00:00Z",
+  "updatedAt": "2026-07-09T12:00:00Z"
+}

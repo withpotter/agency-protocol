@@ -9,6 +9,22 @@ and this repository adheres to [Semantic Versioning](https://semver.org/spec/v2.
 
 ### Added
 
+- `versions/v0.0.1/schemas/entities/proposal.schema.json`: the runtime-agnostic
+  governed-proposal envelope. A runtime proposes a change; the host validates,
+  a human/policy approves, and only then is it applied, with an audit trail
+  (`runtime proposes; host validates, persists, applies`). Carries the
+  governance envelope only — `origin`, non-empty `evidence`, `risk`, `status`
+  lifecycle, host-assigned `id`, open `kind` discriminator, and an **opaque,
+  host-owned `payload`**. Domain-specific payload shapes (e.g. Potter's
+  page-diff / feature-bundle / operation) are validated by the host, not the
+  substrate.
+- `versions/v0.0.1/schemas/shared/proposal-evidence.schema.json`: a single piece
+  of evidence justifying a proposal — domain-agnostic `type`
+  (`prompt` | `metric` | `event` | `observation` | `reference`) + `content` +
+  optional `ref`.
+- `versions/v0.0.1/fixtures/{valid,invalid}/`: two valid + four invalid
+  `proposal` fixtures (minimal, full; empty evidence, bad status, non-substrate
+  evidence type, missing payload).
 - Repository skeleton: README, LICENSE, SPEC placeholder, CI workflow stubs,
   and the `versions/v0.0.1/` directory layout.
 - `versions/v0.0.1/schemas/shared/`: shared scalar schemas — `principal-id`,

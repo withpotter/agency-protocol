@@ -1,0 +1,12 @@
+{
+  "id": "p-bad-4",
+  "kind": "example-change",
+  "origin": "agency-runtime",
+  "evidence": [
+    { "type": "prompt", "content": "no payload attached" }
+  ],
+  "risk": "low",
+  "status": "draft",
+  "createdAt": "2026-07-09T12:00:00Z",
+  "updatedAt": "2026-07-09T12:00:00Z"
+}

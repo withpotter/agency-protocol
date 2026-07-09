@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/entities/proposal.schema.json",
+  "title": "Proposal",
+  "description": "A governed proposal: an intelligence runtime proposes a change; the host runtime validates it against this schema plus its own permission/authority closure, a human (or policy) approves, and only then is it applied \u2014 with an append-only audit trail. Runtime proposes; host validates, persists, and applies. `kind` is a host-defined discriminator and `payload` is an opaque, host-owned object: the substrate carries the governance envelope (origin, evidence, risk, status lifecycle) and leaves the domain-specific payload shape to the host, which selects and validates it by `kind`.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "origin",
+    "evidence",
+    "risk",
+    "payload",
+    "status",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "../shared/proposal-evidence.schema.json" }
+    },
+    "risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "payload": {
+      "type": "object",
+      "description": "Opaque, host-defined change description. The substrate does not constrain its shape; the host validates it against a domain schema selected by `kind`."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "proposed", "approved", "applied", "rejected", "expired"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

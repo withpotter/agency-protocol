@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agency-protocol.dev/schemas/v0.0.1/shared/proposal-evidence.schema.json",
+  "title": "ProposalEvidence",
+  "description": "A single piece of evidence justifying a proposal. The host reconstructs the signal\u2192proposal chain from these; every proposal MUST carry at least one. Evidence types are domain-agnostic: `prompt` (a human or agent instruction), `metric` (a quantitative signal), `event` (a system event), `observation` (a derived fact), `reference` (a pointer to external data).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "content"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["prompt", "metric", "event", "observation", "reference"]
+    },
+    "content": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ref": {
+      "type": "string"
+    }
+  }
+}

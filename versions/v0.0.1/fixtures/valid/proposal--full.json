@@ -1,0 +1,20 @@
+{
+  "id": "p-0002",
+  "kind": "example-change",
+  "subject": "subject-123",
+  "origin": "agency-runtime",
+  "evidence": [
+    { "type": "prompt", "content": "conversions dropped on mobile last week" },
+    { "type": "metric", "content": "mobile conversion 1.2% vs 3.4% desktop", "ref": "metric:conversion.mobile" },
+    { "type": "observation", "content": "primary image is 2.1MB unoptimized", "ref": "asset:hero" }
+  ],
+  "risk": "medium",
+  "payload": {
+    "changes": [
+      { "path": "hero.image", "to": "optimized" }
+    ]
+  },
+  "status": "proposed",
+  "createdAt": "2026-07-09T12:00:00Z",
+  "updatedAt": "2026-07-09T12:05:00Z"
+}

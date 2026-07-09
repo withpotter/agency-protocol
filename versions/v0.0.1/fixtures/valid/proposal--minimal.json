@@ -1,0 +1,13 @@
+{
+  "id": "p-0001",
+  "kind": "example-change",
+  "origin": "agency-runtime",
+  "evidence": [
+    { "type": "prompt", "content": "make the summary clearer" }
+  ],
+  "risk": "low",
+  "payload": { "note": "opaque, host-defined change description" },
+  "status": "draft",
+  "createdAt": "2026-07-09T12:00:00Z",
+  "updatedAt": "2026-07-09T12:00:00Z"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "p-bad-2",
+  "kind": "example-change",
+  "origin": "agency-runtime",
+  "evidence": [
+    { "type": "prompt", "content": "ship it" }
+  ],
+  "risk": "low",
+  "payload": {},
+  "status": "live",
+  "createdAt": "2026-07-09T12:00:00Z",
+  "updatedAt": "2026-07-09T12:00:00Z"
+}
