@@ -8,6 +8,7 @@ on:
 jobs:
   fixtures:
     name: Validate fixtures against schemas
+    timeout-minutes: 3
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
