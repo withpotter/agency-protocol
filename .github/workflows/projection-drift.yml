@@ -8,6 +8,7 @@ on:
 jobs:
   drift:
     name: Regenerate projections and fail on diff
+    timeout-minutes: 3
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

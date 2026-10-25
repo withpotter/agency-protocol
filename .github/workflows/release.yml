@@ -8,6 +8,7 @@ on:
 jobs:
   release-npm:
     name: Publish npm projection (GitHub Packages)
+    timeout-minutes: 3
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -34,6 +35,7 @@ jobs:
 
   release-pypi:
     name: Publish PyPI projection (GitHub Packages)
+    timeout-minutes: 3
     runs-on: ubuntu-latest
     permissions:
       contents: read
